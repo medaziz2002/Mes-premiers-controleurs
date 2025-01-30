@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calcul Factorielle & Combinaisons{% endblock %}
+
+{% block body %}
+    <h1>Exercice 5 (Twig)</h1>
+    <p>On reste dans le projet précédent mais on souhaite maintenant écrire une page Web sur la route `/` permettant de calculer la fonction factorielle ou le nombre de combinaisons.</p>
+
+    <h2>Calcul de n!</h2>
+    <form method="GET">
+        <label for="n">n</label>
+        <select name="n" id="n">
+            {% for i in 0..20 %}
+                <option value="{{ i }}" {% if i == n %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">OK</button>
+    </form>
+
+    <h2>Calcul des combinaisons de n éléments dans p places</h2>
+    <form method="GET">
+        <label for="n">n</label>
+        <select name="n" id="n">
+            {% for i in 0..20 %}
+                <option value="{{ i }}" {% if i == n %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="p">p</label>
+        <select name="p" id="p">
+            {% for i in 0..20 %}
+                <option value="{{ i }}" {% if i == p %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">OK</button>
+    </form>
+
+    <h2>Résultat</h2>
+    {% if result is not null %}
+        <div class="result">
+            <p><strong>{{ calculationType }} :</strong> {{ result }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
